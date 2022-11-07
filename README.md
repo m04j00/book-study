@@ -11,4 +11,6 @@
 ### Clean Code
 | Chapter | 페이지 | 진행 날짜 | 정리본 | 
 |:---:|:---:|:---:|:---:|
-| 1장 깨끗한 코드 | p36 ~ p55 | 2022.10.24 ~ 2022.10.30 | [go!]() |
+| 1장 깨끗한 코드 | p36 ~ p55 | 2022.10.24 ~ 2022.10.30 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/1%EC%9E%A5%20%EA%B9%A8%EB%81%97%ED%95%9C%20%EC%BD%94%EB%93%9C) |
+| 2장 의미 있는 이름 | p56 ~ p73 | 2022.10.31 ~ 2022.11.06 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/2%EC%9E%A5%20%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84) |
+| 3장 함수 | p74 ~ p100 | 2022.11.07 ~ 2022.11.20 | [go!]() |
