@@ -111,3 +111,109 @@ Circle makeCircle(Point center, double radius);
     - `writeField(name)` - 좀 더 나은 이름으로 이름이 필드라는 사실이 분명히 드러난다.
 - 함수 이름에 키워드를 추가하는 형식이 있다.
     - `assertExpectedEqualsActual(expected, actual)` - 인수 순서를 기억할 필요가 없어 `assertEquals`보다 좋다.
+
+### 부수 효과를 일으키지 마라
+
+- 함수로 넘어온 인수나 시스템 전역 변수를 수정하는 등 시간적인 결합이나 순서 종속성을 초래한다.
+
+출력 인수
+
+- 일반적으로 인수를 함수 입력으로 해석한다.
+- 출력 인수는 주소 값을 참조하여 값을 변경하는 인수다..?!
+- 객체 지향 언어에서 출력 인수를 사용할 필요가 거의 없다. 
+밑의 코드는 반환값이 없지만 StringBuffer 객체에 footer를 추가하는 함수이다. 이때 인수를 출력 인수라 하는데, 인지적인 이유로 가독성을 떨어뜨려 자제해야 한다.
+    
+    ```java
+    public void appendFooter(StringBuffer report)
+    -> report.appendFooter()
+    ```
+    
+    - 출력 인수로 사용하라고 설계한 변수가 바로 this다.
+    - 변경한 코드는 반환값이 없고 report 객체에 footer를 추가한다는 것을 직관적으로 알 수 있다.
+
+### 명령과 조회를 분리하라
+
+- 함수는 객체 상태를 변경하거나 객체 정보를 반환하거나 둘 중 하나다. 둘 다 하면 안된다.
+
+```java
+public boolean set(String attribute, String value);
+
+if (set("username", "unclebob")) {...}
+```
+
+- 함수를 호출하는 코드만 봐서는 set이 동사인지 형용사인지 분간이 어렵다.
+    - if문은 `username` 속성이 `unclebob으로 설정되어있다면…` 으로 읽히지만 개발자는 `username을 unclebob으로 설정하는 성공하면…`을 의도했다.
+    
+    ```java
+    if (attributeExists("username")) {
+    	setAttribute("username", "unclebob");
+    	...
+    }
+    ```
+    
+    - 명령과 조회를 분리한다면 혼란을 방지할 수 있다.
+
+### 오류 코드보다 예외를 사용하라
+
+- 오류 코드 대신 예외를 사용하면 오류 처리 코드가 원래 코드에서 분리되므로 코드가 깔끔해진다.
+
+```java
+try {
+	deletePage(page);
+	registry.deleteReference(page.name);
+	configKeys.deleteKey(page.anme.makeKey());
+} catch (Exception e) {
+		logger.log(e.getMessage());
+}
+```
+
+Try/Catch 블록 뽑아내기
+
+- try/catch 블록은 코드 구조에 혼란을 일으키며 정상 동작과 오류 처리 동작을 뒤섞는다. 그러므로 별도 함수로 뽑아내는 편이 좋다.
+
+```java
+public void delete(Page page) {
+	try {
+		deletePageAndAllReferences(page);
+	} catch (Exception e) {
+		logError(e);
+}
+private void deletePageAndAllReferences(page page) throws Exception {
+	deletePage(page);
+	registry.deleteReference(page.name);
+	configKeys.deleteKey(page.anme.makeKey());
+}
+```
+
+- `deletePageAndAllReferences`  함수가 실제로 페이지를 제거하고 예외를 처리하지 않는다.
+- 정상 동작과 오류 처리 동작을 분리하면 코드를 이해하고 수정하기 쉬어진다.
+    
+    나는 현재 php 개발을 하고 있는데, 오래된 프로젝트라 php4 버전이다. 해당 버전은 try/catch를 제공하지 않아 예외 처리를 어떻게 해야 할지 난감했었다. php 더 높은 버전이나 스프링 개발을 할 때 정상 동작과 오류 처리 동작을 분리하여 코드를 짤 수 있도록 해야겠다. 
+    
+
+오류 처리도 한 가지 작업이다.
+
+- 오류 처리도 한 가지 작업에 속하기에 오류 처리하는 함수는 오류만 처리해야 마땅하다.
+- 함수에 키워드 try가 있다면 try문으로 시작해 catch/finally문으로 끝나야 한다.
+
+Error.java 의존성 자석 
+
+- 오류 코드를 반환한다는 말은 클래스든 열거형 변수든 어디선가 오류 코드를 정의한다는 의미다.
+- 다른 클래스에서 Error enum을 import해 사용하므로 enum이 변한다면 enum을 사용하는 클래스 전부를 다시 컴파일하고 다시 배치해야 한다.
+- 오류 코드 대신 예외를 사용하면 새 에외는 Exception 클래스에서 파생된다. 따라서 재컴파일/재배치 없이도 새 예외 클래스를 추가할 수 있다.
+
+### 반복하지 마라
+
+- 중복은 코드 길이가 늘어날 뿐 아니라 알고리즘이 변하면 해당하는 곳을 모두 손봐야 하니 수정 과정에서 오류가 발생할 확률도 더 높다.
+- 중복은 소프트웨어에서 모든 악의 근원이다. 중복을 제거할 목적으로 RDB에 정규 형식을 만들었고 구조적 프로그래밍, AOP, COP 모두 어떤 면에서 중복 제거 전략이다.
+
+### 함수를 어떻게 짜죠?
+
+- 처음에는 길고 복잡하다. 들여쓰기 단계도 많고 중복된 루프도 많다. 서투른 코드를 빠짐없이 테스트하는 단위 테스트 케이스로 만든다.
+- 그 다음 코드를 다듬고 함수를 만들고 이름을 바꾸고 중복을 제거한다. 메소드를 줄이고 순서를 바꾼다. 이와중에도 코드는 항상 단위 테스트를 통과한다.
+
+## 느낀점
+
+부수 효과를 일으키지 마라의 checkPassword 함수의 예가 인상적이었다. 해당 함수는 비밀번호가 맞는지 확인하는 함수인데 비밀번호가 맞다면 세션을 초기화한다. 세션 초기화가 한줄밖에 안되는 코드임에도 세션을 초기화한다는 것 자체가 함수 이름에 위배되는 행동이었다는 걸 알게 되었다. 
+
+프로젝트를 하면서 함수에 흐름을 타고 보니 함수 이름과 맞지 않는 코드를 추가했던 적이 있는 거 같다. 파라미터의 유효성 검사 함수일 경우 자꾸 한 함수로 해결하려다 보니 함수 이름과 맞지 않는 것 같아 결국 함수 이름에 맞게 유효성 체크를 하도록 여러개의 함수를 정의한 적도 있다. 어떨 때는 함수 이름에 위반하고 어떨 때는 융통성있게 가기 위해 함수를 구현하고 했었는데 이 책을 읽으면서 코드를 어떻게 짜야 좋을지 참고하면서 짜게 된다.
