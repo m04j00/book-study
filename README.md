@@ -19,3 +19,4 @@
 | 6장 객체와 자료 구조 | p152 ~ p163 | 2022.12.05 ~ 2022.12.11 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/6%EC%9E%A5%20%EA%B0%9D%EC%B2%B4%EC%99%80%20%EC%9E%90%EB%A3%8C%20%EA%B5%AC%EC%A1%B0) |
 | 7장 오류 처리 | p164 ~ p177 | 2022.12.12 ~ 2022.12.18 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/7%EC%9E%A5%20%EC%98%A4%EB%A5%98%20%EC%B2%98%EB%A6%AC) |
 | 8장 경계 | p178 ~ p187 | 2022.12.19 ~ 2022.12.25 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/8%EC%9E%A5%20%EA%B2%BD%EA%B3%84) |
+| 9장 단위 테스트 | p188 ~ p204 | 2022.12.26 ~ 2023.01.07 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/9%EC%9E%A5%20%EB%8B%A8%EC%9C%84%20%ED%85%8C%EC%8A%A4%ED%8A%B8) |
