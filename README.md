@@ -21,4 +21,5 @@
 | 8장 경계 | p178 ~ p187 | 2022.12.19 ~ 2022.12.25 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/8%EC%9E%A5%20%EA%B2%BD%EA%B3%84) |
 | 9장 단위 테스트 | p188 ~ p204 | 2022.12.26 ~ 2023.01.08 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/9%EC%9E%A5%20%EB%8B%A8%EC%9C%84%20%ED%85%8C%EC%8A%A4%ED%8A%B8) |
 | 10장 클래스 | p206 ~ p226 | 2022.01.09 ~ 2023.01.22 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/10%EC%9E%A5%20%ED%81%B4%EB%9E%98%EC%8A%A4) |
-| 11장 시스템 | p228 ~ p248 | 2022.01.23 ~ 2023.01.29 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/11%EC%9E%A5%20%EC%8B%9C%EC%8A%A4%ED%85%9C) |
+| 11장 시스템 | p228 ~ p249 | 2022.02.13 ~ 2023.02.19 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/11%EC%9E%A5%20%EC%8B%9C%EC%8A%A4%ED%85%9C) |
+| 12장 창발성 | p250 ~ p259 | 2022.02.20 ~ 2023.02.26 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/12%EC%9E%A5%20%EC%B0%BD%EB%B0%9C%EC%84%B1) |
