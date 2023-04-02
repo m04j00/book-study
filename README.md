@@ -23,3 +23,4 @@
 | 10장 클래스 | p206 ~ p226 | 2022.01.09 ~ 2023.01.22 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/10%EC%9E%A5%20%ED%81%B4%EB%9E%98%EC%8A%A4) |
 | 11장 시스템 | p228 ~ p249 | 2022.02.13 ~ 2023.02.19 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/11%EC%9E%A5%20%EC%8B%9C%EC%8A%A4%ED%85%9C) |
 | 12장 창발성 | p250 ~ p259 | 2022.02.20 ~ 2023.02.26 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/12%EC%9E%A5%20%EC%B0%BD%EB%B0%9C%EC%84%B1) |
+| 13장 동시성 | p260 ~ p279 | 2022.03.27 ~ 2023.04.30 | [go!](https://github.com/m04j00/book-study/tree/main/Clean%20Code/13%EC%9E%A5%20%EB%8F%99%EC%8B%9C%EC%84%B1) |
